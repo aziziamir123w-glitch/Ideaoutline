@@ -1,5 +1,20 @@
 namespace DiscVault.Api.Models;
 
+public enum UserRole
+{
+    Buyer,
+    Seller,
+    Admin
+}
+
+public class AppUser
+{
+    public int Id { get; set; }
+    public string Username { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty; // Prototype only; hash in production
+    public UserRole Role { get; set; } = UserRole.Buyer;
+}
+
 public class Game
 {
     public int Id { get; set; }
@@ -9,7 +24,7 @@ public class Game
     public decimal Price { get; set; }
     public int Stock { get; set; }
     public bool IsTopSeller { get; set; }
-    public string? CoverImageUrl { get; set; }
+    public string SellerName { get; set; } = "DiscVault Official";
 }
 
 public class Order
